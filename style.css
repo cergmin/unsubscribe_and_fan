@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    cursor: url("images/default.png"), default;
+}
+body{
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+}
+.cursor{
+    background-image: url("images/default.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 17px;
+    height: 23px;
+    z-index: 100;
+    position: absolute;
+}
+.fan_block{
+    width: 100vw;
+    height: 60vh;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    position: absolute;
+}
+.fan{
+    width: auto;
+    height: 100%;
+    right: 0;
+    position: absolute;
+}
+.air{
+    background-image: url("images/air.png");
+    background-repeat: repeat;
+    background-size: calc(46vh / 8);
+    width: calc(100vw - (60vh * (481 / 812)) + 7vh);
+    height: 46vh;
+    top: 1vh;
+    position: absolute;
+}
+.unsubscribe_btn{
+    background-color: #ff787e;
+    color: #fff;
+    width: auto;
+    height: 19px;
+    top: 0;
+    bottom: 0;
+    right: 12vh;
+    margin: auto 0;
+    padding: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: 600;
+    display: block;
+    position: absolute;
+}
+
+@media (max-height: 450px){
+    .air{
+        background-size: calc(46vh / 7);
+    }
+}
+@media (max-height: 400px){
+    .air{
+        background-size: calc(46vh / 6);
+    }
+}
+@media (max-height: 350px){
+    .air{
+        background-size: calc(46vh / 5);
+    }
+}
+@media (max-height: 300px){
+    .air{
+        background-size: calc(46vh / 4);
+    }
+}
+@media (max-height: 250px){
+    .air{
+        background-size: calc(46vh / 3);
+    }
+}
