@@ -1,119 +1,19 @@
 <html>
-<head>
+  <head>
     <title>Fan and unsubscribe button</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="cursor hidden"></div>
-<div class="fan_block">
-    <div class="air">
-        <a href="#" class="unsubscribe_btn">Unsubscribe</a>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="cursor"></div>
+    <div class="pointer_lock_banner">
+      Click here to lock the cursor
     </div>
-    <img src="images/fan.png" class="fan">
-</div>
-<script>
-    const frame_rate = 60;
-
-    let cursor = document.getElementsByClassName('cursor')[0];
-    let body = document.getElementsByTagName('body')[0];
-    let air = document.getElementsByClassName('air')[0];
-
-    let x_wind_offset = 0;
-    let x = 0, y = 0;
-    let isCursorControlled = false;
-
-    body.onclick = function(e){
-        if(!isCursorControlled){
-            body.requestPointerLock();
-            x = e.clientX;
-            y = e.clientY;
-        }
-    };
-
-    document.addEventListener('pointerlockchange', function(e){
-        if(document.pointerLockElement === null){
-            document.removeEventListener("mousemove", updateCursorPosition, false);
-            isCursorControlled = false;
-        }
-        else{
-            document.addEventListener("mousemove", updateCursorPosition, false);
-            isCursorControlled = true;
-        }
-    });
-
-    function updateCursorPosition(e) {
-        if(isCursorControlled){
-            if(e.movementX > 0 && isInWind()){
-                x += e.movementX / (1 + (x / document.body.clientWidth * 3))
-            }
-            else{
-                x += e.movementX;
-            }
-            y += e.movementY;
-
-            if (x < 0){
-                x = 0;
-            }
-            if (y < 0){
-                y = 0;
-            }
-            if (x > document.body.clientWidth){
-                x = document.body.clientWidth;
-            }
-            if(y > document.body.clientHeight){
-                y = document.body.clientHeight;
-            }
-
-            cursor.setAttribute(
-                "style", "transform: translateX(" + x + "px) translateY(" + y + "px)"
-            );
-        }
-        else{
-            cursor.setAttribute(
-                "style", "display: none;"
-            );
-        }
-    }
-
-    function isInWind(){
-        // Returns true if cursor is in the .air
-        if(x > (air.getBoundingClientRect().left + air.offsetWidth)){
-            return false;
-        }
-        if(y < air.getBoundingClientRect().top ||
-            y > (air.getBoundingClientRect().top + air.offsetHeight)){
-            return false;
-        }
-        return true;
-    }
-
-    setInterval(function () {
-        // Animation for wind
-        x_wind_offset -= 0.6 * (1000 / frame_rate);
-
-        document.getElementsByClassName("air")[0].setAttribute(
-            "style", "background-position-x: " + x_wind_offset + "px"
-        );
-
-        // Changing cursor's position
-        if(isCursorControlled) {
-            if (isInWind()) {
-                x -= 0.6 * (1000 / frame_rate);
-                if (x < 0) {
-                    x = 0;
-                }
-            }
-
-            cursor.setAttribute(
-                "style", "transform: translateX(" + x + "px) translateY(" + y + "px)"
-            );
-        }
-        else{
-            cursor.setAttribute(
-                "style", "display: none;"
-            );
-        }
-    }, 1000 / frame_rate);
-</script>
-</body>
+    <div class="fan_block">
+      <div class="wind">
+        <button class="unsubscribe_btn">Unsubscribe</button>
+      </div>
+      <img src="images/fan.png" class="fan">
+    </div>
+    <script src="./main.js"></script>
+  </body>
 </html>

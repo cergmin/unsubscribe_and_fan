@@ -1,0 +1,119 @@
+* {
+    padding: 0;
+    margin: 0;
+    cursor: url("images/default.png"), default;
+    user-select: none;
+  }
+  
+  body {
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  
+  .cursor {
+    position: absolute;
+    z-index: 100;
+    width: 17px;
+    height: 23px;
+    background-image: url("images/default.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    will-change: transform;
+  }
+  
+  .pointer_lock_banner {
+    position: fixed;
+    z-index: 50;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    border: 10px dashed #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+  }
+  
+  .fan_block {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 60vh;
+    margin: auto 0;
+  }
+  
+  .fan {
+    position: absolute;
+    right: 0;
+    width: auto;
+    height: 100%;
+  }
+  
+  .wind {
+    position: absolute;
+    top: 1vh;
+    width: calc(100vw - (60vh * (481 / 812)) + 7vh);
+    height: 46vh;
+    background-image: url("images/wind.png");
+    background-repeat: repeat;
+    background-size: calc(46vh / 8);
+    will-change: background-position;
+  }
+  
+  .unsubscribe_btn {
+    position: absolute;
+    top: 0;
+    right: 12vh;
+    bottom: 0;
+    display: block;
+    width: auto;
+    height: 49px;
+    padding: 15px;
+    margin: auto 0;
+    background-color: #ff787e;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  @media (max-height: 450px) {
+    .wind {
+      background-size: calc(46vh / 7);
+    }
+  }
+  
+  @media (max-height: 400px) {
+    .wind {
+      background-size: calc(46vh / 6);
+    }
+  }
+  
+  @media (max-height: 350px) {
+    .wind {
+      background-size: calc(46vh / 5);
+    }
+  }
+  
+  @media (max-height: 300px) {
+    .wind {
+      background-size: calc(46vh / 4);
+    }
+  }
+  
+  @media (max-height: 250px) {
+    .wind {
+      background-size: calc(46vh / 3);
+    }
+  }
+  
